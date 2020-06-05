@@ -12,19 +12,13 @@ const globalErrorMiddleware = require('./app/middlewares/appErrorHandler');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
-
 app.use(morgan('dev'));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(routeLoggerMiddleware.logIp);
 app.use(globalErrorMiddleware.globalErrorHandler);
-
 app.use(express.static(path.join(__dirname, 'client')));
-
-
-
 
 const modelsPath = './app/models';
 const controllersPath = './app/controllers';
@@ -152,7 +146,7 @@ mongoose.connection.on('open', function (err) {
     logger.info("database connection open",
       'database connection open handler', 10)
   }
-  //process.exit(1)
+  
 }); // enr mongoose connection open handler
 
 
